@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            padding: 50px;
+            color: #4a154b;
+        }
+        h1 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 3em;
+        }
+        #timer {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .flowers {
+            margin-top: 30px;
+            font-size: 2em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-size: 4em;">Таймер до ...</h1>
+    <div id="timer"></div>
+    <div class="flowers">
+        🌼🌹🌻💐🌺
+    </div>
+    
+    <script>
+        function updateTimer() {
+            const eventDate = new Date('March 8, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').innerHTML = 
+                days + " дн. " + hours + " год. " + minutes + " хв. " + seconds + " сек.";
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
